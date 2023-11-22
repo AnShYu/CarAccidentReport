@@ -5,7 +5,9 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import ru.andrey.caraccidentreport.dbprocessing.CarsProcessor;
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
+import ru.andrey.caraccidentreport.service.ServiceForCars;
 
+import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,72 +22,31 @@ public class CarsHandler implements HttpHandler {
     public void handle (HttpExchange exchange) throws IOException {
         if (exchange.getRequestMethod().equals("GET")) {
 
-            Connection connection = null;
-            Statement stmt = null;
-            ResultSet resultSet = null;
-
             try (OutputStream ops = exchange.getResponseBody()) {
 
-
-
-                Class.forName("org.postgresql.Driver");
-                connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/andrey",
-                        "andrey", "andrey");
-                stmt = connection.createStatement();
-
-                resultSet = stmt.executeQuery("select carplate, brand, model from car_accident_report.cars");
-                List<Car> allCars = new ArrayList<>();
-                while (resultSet.next()) {
-                    Car car = new Car(resultSet.getString("brand"), resultSet.getString("model"),
-                            resultSet.getString("carplate"));
-                    allCars.add(car);
-                }
-
-
-                List<CarDTO> allCarDTOs = new ArrayList<>();
-                for (Car car: allCars) {
-                    CarDTO carDTO = new CarDTO();
-                    carDTO.setCarBrand(car.getCarBrand());
-                    carDTO.setCarModel(car.getCarModel());
-                    carDTO.setCarPlate(car.getCarPlate());
-                    allCarDTOs.add(carDTO);
-                }
-
+                ServiceForCars sfc = new ServiceForCars();
+                List<CarDTO> allCarDTOs = sfc.getAllCars();
 
                 exchange.sendResponseHeaders(200, 0);
                 String allCarsJson = new Gson().toJson(allCarDTOs);
                 ops.write(allCarsJson.getBytes(StandardCharsets.UTF_8));
 
-
-            } catch (ClassNotFoundException e) {
+            } catch (DataAccessException e) {
                 exchange.sendResponseHeaders(500, 0);
                 try (OutputStream ops = exchange.getResponseBody()) {
-                    ops.write("Server Error CNF".getBytes(StandardCharsets.UTF_8));
+                    ops.write("Server Error".getBytes(StandardCharsets.UTF_8));
                 }
-            } catch (SQLException e) {
-                exchange.sendResponseHeaders(500, 0);
-                try (OutputStream ops = exchange.getResponseBody()) {
-                    ops.write("Server Error SQL".getBytes(StandardCharsets.UTF_8));
-                }
-            } finally {
-                try {
-                    resultSet.close();
-                    stmt.close();
-                    connection.close();
-                } catch (SQLException e) {
-                    System.out.println("Runtime Exception");
-                }
-
             }
+
         } else if (exchange.getRequestMethod().equals("POST")) {
 
             try (InputStream is = exchange.getRequestBody(); OutputStream ops = exchange.getResponseBody()) {
                 byte[] bytes = is.readAllBytes();
                 String carToAdd = new String(bytes,StandardCharsets.UTF_8);
-                CarDTO carDto = new Gson().fromJson(carToAdd, CarDTO.class); // обязательно ли здесь использовать DTO?
+                CarDTO carDto = new Gson().fromJson(carToAdd, CarDTO.class);
 
-                CarsProcessor cp = new CarsProcessor();
-                cp.addACar(carDto);
+                ServiceForCars sfc = new ServiceForCars();
+                sfc.addACar(carDto);
 
                 exchange.sendResponseHeaders(200, 0);
                 ops.write("Car was added".getBytes(StandardCharsets.UTF_8));

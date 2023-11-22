@@ -1,7 +1,7 @@
 package httpmanager;
 
 import org.junit.Test;
-import ru.andrey.caraccidentreport.htttpmanager.Car;
+import ru.andrey.caraccidentreport.htttpmanager.CarData;
 import ru.andrey.caraccidentreport.htttpmanager.CarDTO;
 
 import java.sql.*;
@@ -24,17 +24,17 @@ public class CarsHandlerTest {
         ResultSet resultSet = stmt.executeQuery("select carplate, brand, model from car_accident_report.cars");
 
 
-        List<Car> allCars = new ArrayList<>();
+        List<CarData> allCars = new ArrayList<>();
         while (resultSet.next()) {
-            Car car = new Car(resultSet.getString("brand"), resultSet.getString("model"),
+            CarData car = new CarData(resultSet.getString("brand"), resultSet.getString("model"),
                     resultSet.getString("carplate"));
             allCars.add(car);
         }
 
-        Car car0 = new Car ("KIA", "Rio", "E123HM77");
-        Car car1 = new Car ("VW", "Polo", "A234TB40");
-        Car car2 = new Car ("BMW", "X5", "H743MO50");
-        Car car3 = new Car ("Lada", "Priora", "X093EA14");
+        CarData car0 = new CarData("KIA", "Rio", "E123HM77");
+        CarData car1 = new CarData("VW", "Polo", "A234TB40");
+        CarData car2 = new CarData("BMW", "X5", "H743MO50");
+        CarData car3 = new CarData("Lada", "Priora", "X093EA14");
 
         assertEquals(car0, allCars.get(0));
         assertEquals(car1, allCars.get(1));
@@ -49,11 +49,11 @@ public class CarsHandlerTest {
 
     @Test
     public void testDTOConversion() {
-        List<Car> allCars = new ArrayList<>();
-        Car car0 = new Car ("KIA", "Rio", "E123HM77");
-        Car car1 = new Car ("VW", "Polo", "A234TB40");
-        Car car2 = new Car ("BMW", "X5", "H743MO50");
-        Car car3 = new Car ("Lada", "Priora", "X093EA14");
+        List<CarData> allCars = new ArrayList<>();
+        CarData car0 = new CarData("KIA", "Rio", "E123HM77");
+        CarData car1 = new CarData("VW", "Polo", "A234TB40");
+        CarData car2 = new CarData("BMW", "X5", "H743MO50");
+        CarData car3 = new CarData("Lada", "Priora", "X093EA14");
 
         allCars.add(car0);
         allCars.add(car1);
@@ -61,7 +61,7 @@ public class CarsHandlerTest {
         allCars.add(car3);
 
         List<CarDTO> allCarDTOs = new ArrayList<>();
-        for (Car car: allCars) {
+        for (CarData car: allCars) {
             CarDTO carDTO = new CarDTO();
             carDTO.setCarBrand(car.getCarBrand());
             carDTO.setCarModel(car.getCarModel());

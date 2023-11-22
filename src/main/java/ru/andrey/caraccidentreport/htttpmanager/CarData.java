@@ -2,12 +2,14 @@ package ru.andrey.caraccidentreport.htttpmanager;
 
 import java.util.Objects;
 
-public class Car {
+public class CarData {
     private String carBrand;
     private String carModel;
     private String carPlate;
 
-    public Car(String carBrand, String carType, String carPlate) {
+    public CarData(){
+    }
+    public CarData(String carBrand, String carType, String carPlate) {
         this.carBrand = carBrand;
         this.carModel = carType;
         this.carPlate = carPlate;
@@ -41,7 +43,7 @@ public class Car {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
+        CarData car = (CarData) o;
         return Objects.equals(carBrand, car.carBrand) && Objects.equals(carModel, car.carModel) && Objects.equals(carPlate, car.carPlate);
     }
 

@@ -1,20 +1,15 @@
 package ru.andrey.caraccidentreport.dbprocessing;
 
-import com.google.gson.Gson;
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
-import ru.andrey.caraccidentreport.htttpmanager.Car;
-import ru.andrey.caraccidentreport.htttpmanager.CarDTO;
+import ru.andrey.caraccidentreport.htttpmanager.CarData;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarsProcessor {
 
-    public List<Car> getAllCars () throws DataAccessException {
+    public List<CarData> getAllCars () throws DataAccessException {
 
         Connection connection = null;
         Statement stmt = null;
@@ -27,9 +22,9 @@ public class CarsProcessor {
             stmt = connection.createStatement();
 
             resultSet = stmt.executeQuery("select carplate, brand, model from car_accident_report.cars");
-            List<Car> allCars = new ArrayList<>();
+            List<CarData> allCars = new ArrayList<>();
             while (resultSet.next()) {
-                Car car = new Car(resultSet.getString("brand"), resultSet.getString("model"),
+                CarData car = new CarData(resultSet.getString("brand"), resultSet.getString("model"),
                         resultSet.getString("carplate"));
                 allCars.add(car);
             }
@@ -51,11 +46,11 @@ public class CarsProcessor {
         }
     }
 
-    public void addACar (CarDTO carDto) throws DataAccessException {
+    public void addACar (CarData car) throws DataAccessException {
 
-        String carBrand = carDto.getCarBrand();
-        String carModel = carDto.getCarModel();
-        String carPlate = carDto.getCarPlate();
+        String carBrand = car.getCarBrand();
+        String carModel = car.getCarModel();
+        String carPlate = car.getCarPlate();
 
         Connection connection = null;
         PreparedStatement pstmt = null;

@@ -38,6 +38,8 @@ public class ReportParser {
         String guilt = TextParserUtil.parseText(text, patternsKeeper.getPattern(PatternsKeeper.GUILT)).get(0);
         if (!guilt.contains("не признаю")) {
             guilt = "признаю";
+        } else {
+            guilt = "не признаю";
         }
         circumstances.setGuiltOfTheReportingDriver(guilt);
 
