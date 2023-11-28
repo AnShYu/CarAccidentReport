@@ -1,8 +1,8 @@
 package httpmanager;
 
 import org.junit.Test;
-import ru.andrey.caraccidentreport.htttpmanager.CarData;
-import ru.andrey.caraccidentreport.htttpmanager.CarDTO;
+import ru.andrey.caraccidentreport.model.CarData;
+import ru.andrey.caraccidentreport.dto.CarDTO;
 
 import java.sql.*;
 import java.util.ArrayList;

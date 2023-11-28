@@ -1,4 +1,4 @@
-package ru.andrey.caraccidentreport.accidentcircumstances;
+package ru.andrey.caraccidentreport.parsing;
 
 import java.util.Objects;
 

@@ -2,8 +2,8 @@ package ru.andrey.caraccidentreport.service;
 
 import ru.andrey.caraccidentreport.dbprocessing.CarsProcessor;
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
-import ru.andrey.caraccidentreport.htttpmanager.CarData;
-import ru.andrey.caraccidentreport.htttpmanager.CarDTO;
+import ru.andrey.caraccidentreport.model.CarData;
+import ru.andrey.caraccidentreport.dto.CarDTO;
 
 import java.util.ArrayList;
 import java.util.List;

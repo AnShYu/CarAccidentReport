@@ -1,9 +1,6 @@
 package ru.andrey.caraccidentreport.parsing;
 
 import org.junit.Test;
-import ru.andrey.caraccidentreport.accidentcircumstances.Accident;
-import ru.andrey.caraccidentreport.accidentcircumstances.Driver;
-import ru.andrey.caraccidentreport.accidentcircumstances.GeneralCircumstances;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

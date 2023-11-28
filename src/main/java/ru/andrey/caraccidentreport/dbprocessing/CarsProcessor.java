@@ -1,7 +1,7 @@
 package ru.andrey.caraccidentreport.dbprocessing;
 
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
-import ru.andrey.caraccidentreport.htttpmanager.CarData;
+import ru.andrey.caraccidentreport.model.CarData;
 
 import java.sql.*;
 import java.util.ArrayList;

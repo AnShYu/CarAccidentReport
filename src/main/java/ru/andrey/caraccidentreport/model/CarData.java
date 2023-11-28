@@ -1,4 +1,4 @@
-package ru.andrey.caraccidentreport.htttpmanager;
+package ru.andrey.caraccidentreport.model;
 
 import java.util.Objects;
 

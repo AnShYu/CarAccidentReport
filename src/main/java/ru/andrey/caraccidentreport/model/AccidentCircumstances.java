@@ -1,4 +1,4 @@
-package ru.andrey.caraccidentreport.htttpmanager;
+package ru.andrey.caraccidentreport.model;
 
 public class AccidentCircumstances {
     // Указываю все поля, которые есть в таблице Accident
@@ -7,8 +7,9 @@ public class AccidentCircumstances {
     private String district;
     private String street;
     private String building;
-    private boolean DriverClaimedGuilty;
+    private boolean DriverClaimedGuilt;
     private boolean DriverDeclaredGuilty;
+    private String time;
 
     public String getProvince() {
         return province;
@@ -50,12 +51,12 @@ public class AccidentCircumstances {
         this.building = building;
     }
 
-    public boolean isDriverClaimedGuilty() {
-        return DriverClaimedGuilty;
+    public boolean isDriverClaimedGuilt() {
+        return DriverClaimedGuilt;
     }
 
-    public void setDriverClaimedGuilty(boolean driverClaimedGuilty) {
-        DriverClaimedGuilty = driverClaimedGuilty;
+    public void setDriverClaimedGuilt(boolean driverClaimedGuilt) {
+        DriverClaimedGuilt = driverClaimedGuilt;
     }
 
     public boolean isDriverDeclaredGuilty() {
@@ -64,5 +65,13 @@ public class AccidentCircumstances {
 
     public void setDriverDeclaredGuilty(boolean driverDeclaredGuilty) {
         DriverDeclaredGuilty = driverDeclaredGuilty;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

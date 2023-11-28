@@ -1,4 +1,4 @@
-package ru.andrey.caraccidentreport.htttpmanager;
+package ru.andrey.caraccidentreport.dto;
 
 import java.util.Objects;
 

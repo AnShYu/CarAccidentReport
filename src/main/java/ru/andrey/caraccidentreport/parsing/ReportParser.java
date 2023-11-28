@@ -1,9 +1,5 @@
 package ru.andrey.caraccidentreport.parsing;
 
-import ru.andrey.caraccidentreport.accidentcircumstances.Accident;
-import ru.andrey.caraccidentreport.accidentcircumstances.Driver;
-import ru.andrey.caraccidentreport.accidentcircumstances.GeneralCircumstances;
-
 public class ReportParser {
 
     public static Accident makeParsing(String text, PatternsKeeper patternsKeeper) {

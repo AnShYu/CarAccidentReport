@@ -3,17 +3,14 @@ package ru.andrey.caraccidentreport.htttpmanager;
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import ru.andrey.caraccidentreport.dbprocessing.CarsProcessor;
+import ru.andrey.caraccidentreport.dto.CarDTO;
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
 import ru.andrey.caraccidentreport.service.ServiceForCars;
 
-import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarsHandler implements HttpHandler {
