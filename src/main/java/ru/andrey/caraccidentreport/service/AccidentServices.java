@@ -6,6 +6,9 @@ import ru.andrey.caraccidentreport.model.AccidentCircumstances;
 import ru.andrey.caraccidentreport.parsing.GeneralCircumstances;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 public class AccidentServices {
 
@@ -30,9 +33,14 @@ public class AccidentServices {
         String[] time = gc.getTime().split(":");
         int hour = Integer.parseInt(time[0]);
         int minute = Integer.parseInt(time[1]);
+        LocalDateTime ldt = LocalDateTime.of(year, month, day, hour, minute);
+        ZonedDateTime zdt = ldt.atZone(ZoneId.of("Europe/Moscow"));
 
-        long timeInNanoSeconds = (year - 1970)*365*24*60*60*1000000000 + month*29*24*60*60*1000000000 + day*24*60*60*1000000000 + hour*60*60*1000000000 + minute*60*1000000000;
-        Timestamp timeStamp = new Timestamp(timeInNanoSeconds);
+        long timeInMiliSeconds = zdt.toInstant().toEpochMilli();
+
+//                (year - 1970)*365*24*60*60*1000 + month*29*24*60*60*1000 + day*24*60*60*1000
+//                + hour*60*60*1000 + minute*60*1000;
+        Timestamp timeStamp = new Timestamp(timeInMiliSeconds);
 //        Timestamp timeStamp = new Timestamp(year, month, day, hour, minute, 0, 0);
 
 //       Не поддерживаются поля таблицы (т.к. не распознаются парсером): область, район, driverDeclaredGuilty

@@ -7,14 +7,14 @@ import ru.andrey.caraccidentreport.model.ReportText;
 
 public class ReportTextServices {
 
-    public void addFullReportToDB(ReportTextDTO rtDTO) throws DataAccessException {
+    public void addFullReportToDB(ReportTextDTO rtDTO, long accidentID) throws DataAccessException {
         String report = rtDTO.getText();
 
         ReportText rt = new ReportText();
         rt.setReportText(report);
 
         ReportTextProcessor rtp = new ReportTextProcessor();
-        rtp.addReportText(rt);
+        rtp.addReportText(rt, accidentID);
     }
 
 }

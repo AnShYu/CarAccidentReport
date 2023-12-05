@@ -10,9 +10,10 @@ import java.sql.SQLException;
 
 public class ReportTextProcessor {
 
-    public void addReportText (ReportText rt) throws DataAccessException {
+    public void addReportText (ReportText rt, long accidentId) throws DataAccessException {
 
         String reportText = rt.getReportText();
+        int aID = (int) accidentId;
 
         Connection connection = null;
         PreparedStatement pstmt = null;
@@ -23,10 +24,11 @@ public class ReportTextProcessor {
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/andrey",
                     "andrey", "andrey");
 
-            pstmt = connection.prepareStatement("insert into car_accident_report.initial_text (accident_text) " +
-                    "values (?)");
+            pstmt = connection.prepareStatement("insert into car_accident_report.initial_text (accident_text, accident_id) " +
+                    "values (?, ?)");
 
             pstmt.setString(1, reportText);
+            pstmt.setInt(2, aID);
 
             pstmt.executeUpdate();
 

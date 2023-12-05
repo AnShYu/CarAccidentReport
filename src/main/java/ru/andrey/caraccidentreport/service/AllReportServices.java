@@ -48,6 +48,6 @@ public class AllReportServices {
         aps.addAccidentParticipantDataToDB(driverTwo, accidentId, personIdTwo, carIdTwo);
 
         ReportTextServices rts = new ReportTextServices();
-        rts.addFullReportToDB(rtDTO);
+        rts.addFullReportToDB(rtDTO, accidentId);
     }
 }
