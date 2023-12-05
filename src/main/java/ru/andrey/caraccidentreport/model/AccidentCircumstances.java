@@ -1,5 +1,7 @@
 package ru.andrey.caraccidentreport.model;
 
+import java.sql.Timestamp;
+
 public class AccidentCircumstances {
     // Указываю все поля, которые есть в таблице Accident
     private String province;
@@ -9,7 +11,7 @@ public class AccidentCircumstances {
     private String building;
     private boolean DriverClaimedGuilt;
     private boolean DriverDeclaredGuilty;
-    private String time;
+    private Timestamp dateAndTime;
 
     public String getProvince() {
         return province;
@@ -67,11 +69,11 @@ public class AccidentCircumstances {
         DriverDeclaredGuilty = driverDeclaredGuilty;
     }
 
-    public String getTime() {
-        return time;
+    public Timestamp getDateAndTime() {
+        return dateAndTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDateAndTime(Timestamp dateAndTime) {
+        this.dateAndTime = dateAndTime;
     }
 }

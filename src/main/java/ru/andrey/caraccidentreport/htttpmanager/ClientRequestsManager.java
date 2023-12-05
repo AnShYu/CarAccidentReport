@@ -9,7 +9,7 @@ public class ClientRequestsManager {
 
     public void startServer () throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
-        server.createContext("/accidentreport/cars", new CarsHandler()); // Do we need this?
+//        server.createContext("/accidentreport/cars", new CarsHandler()); // Do we need this?
         server.createContext("/accidentreport/report", new ReportHandler());
         server.start();
     }

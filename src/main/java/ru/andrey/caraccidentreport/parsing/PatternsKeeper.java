@@ -22,7 +22,7 @@ public class PatternsKeeper {
     private String carPlateNumber = "[A-Za-zА-Яа-я]\\d{3}[A-Za-zА-Яа-я]{2}\\d{2,3}";
     private String oSAGONumber = "([A-ZА-Я]{3}(\\s|\\s№\\s|\\sномер\\s)\\d{10})|ОСАГО\\sнет";
     private String address = "(г\\.|гор\\.|город)(\\s|[А-Я])[А-Яа-я]*,\\s(ул\\.|улица|просп\\.|проспект|шос\\.|шоссе)(\\s|[А-Я0-9])[А-Яа-я\\d]*,\\s(д.|дом?)(\\s\\d{1,3}|\\d{1,3})";
-    private String date = "\\d{2}\\.\\d{2}\\.(\\d{2}|\\d{4})";
+    private String date = "\\d{2}\\.\\d{2}\\.(\\d{4})";
     private String time = "(\\d{1,2}:\\d{1,2}|\\d{1,2}\\sчас\\.\\s\\d{1,2}\\sмин\\.)";
     private String guilt = "([^е]\\sпризнаю|не\\sпризнаю)";
 

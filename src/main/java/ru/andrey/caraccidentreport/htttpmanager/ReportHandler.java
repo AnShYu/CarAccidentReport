@@ -5,7 +5,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import ru.andrey.caraccidentreport.dto.ReportTextDTO;
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
-import ru.andrey.caraccidentreport.service.ReportTextService;
+import ru.andrey.caraccidentreport.service.AllReportServices;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,9 +25,8 @@ public class ReportHandler implements HttpHandler {
                 String reportInJSON = new String(data, StandardCharsets.UTF_8);
                 ReportTextDTO reportDTO = new Gson().fromJson(reportInJSON, ReportTextDTO.class);
 
-                ReportTextService rts = new ReportTextService();
+                AllReportServices rts = new AllReportServices();
 
-                rts.addFullReportToDB(reportDTO);
                 rts.parceAndAddToDB(reportDTO);
 
                 exchange.sendResponseHeaders(200,0);

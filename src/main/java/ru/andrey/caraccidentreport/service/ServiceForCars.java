@@ -44,10 +44,10 @@ public class ServiceForCars {
         return allCarDTOs;
     }
 
-    public void addACar(CarDTO carDto) throws DataAccessException {
-        CarsProcessor cp = new CarsProcessor();
-        CarData car = convertToCar(carDto);
-        cp.addACar(car);
-    }
+//    public void addACar(CarDTO carDto) throws DataAccessException {
+//        CarsProcessor cp = new CarsProcessor();
+//        CarData car = convertToCar(carDto);
+//        cp.addACar(car);
+//    }
 
 }
