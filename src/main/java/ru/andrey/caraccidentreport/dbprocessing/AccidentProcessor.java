@@ -43,6 +43,7 @@ public class AccidentProcessor {
 
             pstmt.executeUpdate();
 
+
             ResultSet generatedKeys = pstmt.getGeneratedKeys();
                 if (generatedKeys.next()) {
                     id = generatedKeys.getLong(1);
