@@ -18,6 +18,7 @@ public class ReportHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
 
         if (exchange.getRequestMethod().equals("GET")) {
+            // TODO
             throw new RuntimeException("Method is not implemented");
         } else if (exchange.getRequestMethod().equals("POST")) {
             try (InputStream is = exchange.getRequestBody(); OutputStream ops = exchange.getResponseBody()) {
