@@ -1,7 +1,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
         <servlet-name>ReportServlet</servlet-name>
-        <servlet-class>ru.andrey.caraccidentreport.ReportServlet</servlet-class>
+        <servlet-class>ru.andrey.caraccidentreport.httpmanager.ReportServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ReportServlet</servlet-name>
