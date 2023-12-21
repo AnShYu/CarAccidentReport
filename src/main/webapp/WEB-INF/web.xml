@@ -1,10 +1,18 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
-        <servlet-name>ReportServlet</servlet-name>
+        <servlet-name>addReportServlet</servlet-name>
         <servlet-class>ru.andrey.caraccidentreport.httpmanager.ReportServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ReportServlet</servlet-name>
+        <servlet-name>addReportServlet</servlet-name>
         <url-pattern>/addreport</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>getAccidentDataServlet</servlet-name>
+        <servlet-class>ru.andrey.caraccidentreport.httpmanager.PersonsAccidentsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getAccidentDataServlet</servlet-name>
+        <url-pattern>/getaccidentdata</url-pattern>
     </servlet-mapping>
 </web-app>
