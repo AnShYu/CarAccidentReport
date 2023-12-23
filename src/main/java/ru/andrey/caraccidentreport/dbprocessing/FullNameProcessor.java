@@ -30,11 +30,16 @@ public class FullNameProcessor {
             pstmt.setString(2, name);
             pstmt.setString(3, fathersName);
 
+            ResultSet rs = pstmt.executeQuery();
 
-            //TODO address date guilt
+            if(rs.next()) {
+                int personId = rs.getInt("id");
+            }
+            //TODO
+            String join = "select id from persons ";
 
-//            if (pstmt.executeUpdate().equals(NULL))
-//                String persnIDString = pstmt.executeUpdate();
+
+
 
 
 

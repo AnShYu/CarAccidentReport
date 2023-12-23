@@ -7,7 +7,7 @@ import ru.andrey.caraccidentreport.model.LimitedAccidentData;
 
 public class NameAccidentService {
 
-    public String getAccidentDetails (FullNameDTO fullNameDTO) {
+    public LimitedAccidentData getAccidentDetails (FullNameDTO fullNameDTO) {
 
         String fullName = fullNameDTO.getFullName();
 
@@ -19,14 +19,7 @@ public class NameAccidentService {
 
         LimitedAccidentData lad = new FullNameProcessor().getAccidentData(surname, name, fathersName);
 
-        StringBuilder ladStringBuilder = new StringBuilder();
-        ladStringBuilder = ladStringBuilder.append("address: " + lad.getAddress() + ", ");
-        ladStringBuilder = ladStringBuilder.append("date: " + lad.getDate() + ", ");
-        ladStringBuilder = ladStringBuilder.append("guilt: " + lad.getGuilt());
-
-        String ladString = ladStringBuilder.toString();
-
-        return ladString;
+        return lad;
 
 
 

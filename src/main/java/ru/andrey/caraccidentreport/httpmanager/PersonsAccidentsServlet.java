@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ru.andrey.caraccidentreport.dto.FullNameDTO;
+import ru.andrey.caraccidentreport.model.LimitedAccidentData;
 import ru.andrey.caraccidentreport.service.NameAccidentService;
 
 import java.io.IOException;
@@ -20,8 +21,8 @@ public class PersonsAccidentsServlet extends HttpServlet {
         String fullName = req.getParameter("fullname");
         FullNameDTO fnDTO = new FullNameDTO(fullName);
 
-        String ladString = new NameAccidentService().getAccidentDetails(fnDTO);
-        String ladJson = new Gson().toJson(ladString);
+        LimitedAccidentData lad = new NameAccidentService().getAccidentDetails(fnDTO);
+        String ladJson = new Gson().toJson(lad);
 
         PrintWriter printWriter = resp.getWriter();
         printWriter.write(ladJson);
