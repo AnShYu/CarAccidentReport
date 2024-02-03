@@ -2,7 +2,6 @@ package ru.andrey.caraccidentreport.dbprocessing;
 
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
 import ru.andrey.caraccidentreport.model.AccidentCircumstances;
-
 import java.sql.*;
 
 public class AccidentProcessor {

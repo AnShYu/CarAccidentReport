@@ -1,17 +1,21 @@
-package ru.andrey.caraccidentreport.model;
+package ru.andrey.caraccidentreport.dto;
 
+import ru.andrey.caraccidentreport.model.Address;
 import java.sql.Timestamp;
 
-public class LimitedAccidentData {
+public class LimitedAccidentDataDTO {
 
     private Address address;
     private int guilt;
     private Timestamp time;
 
-    public LimitedAccidentData(Address address, int guilt, Timestamp time) {
+    public LimitedAccidentDataDTO(Address address, int guilt, Timestamp time) {
         this.address = address;
         this.guilt = guilt;
         this.time = time;
+    }
+
+    public LimitedAccidentDataDTO() {
     }
 
     public Address getAddress() {
@@ -38,4 +42,3 @@ public class LimitedAccidentData {
         this.time = time;
     }
 }
-

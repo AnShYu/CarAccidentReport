@@ -2,8 +2,6 @@ package ru.andrey.caraccidentreport.dbprocessing;
 
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
 import ru.andrey.caraccidentreport.model.CarData;
-import ru.andrey.caraccidentreport.model.DriverData;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -100,4 +98,50 @@ public class CarsProcessor {
             }
         }
     }
+
+    public long checkIfCarIsInDB(CarData car) throws DataAccessException {
+
+        String carPlate = car.getCarPlate();
+
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+
+        long id;
+
+        try {
+
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/andrey",
+                    "andrey", "andrey");
+
+            String carIDRequest = "select id from car_accident_report.cars c where c.carplate=?";
+            pstmt = connection.prepareStatement(carIDRequest);
+
+            pstmt.setString(1, carPlate);
+
+
+
+            ResultSet resultSet = pstmt.executeQuery();
+            if (resultSet.next()) {
+                id = resultSet.getLong(1);
+            }
+            else {
+                id = -1;
+            }
+
+        } catch (ClassNotFoundException e) {
+            throw new DataAccessException("Postgres Driver Error", e);
+        } catch (SQLException e) {
+            throw new DataAccessException("SQL Exception", e);
+        } finally {
+            try {
+                pstmt.close();
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException("RunTimeException", e);
+            }
+        }
+        return id;
+    }
+
 }

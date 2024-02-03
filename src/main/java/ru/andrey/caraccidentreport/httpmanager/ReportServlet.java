@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ru.andrey.caraccidentreport.dto.ReportTextDTO;
 import ru.andrey.caraccidentreport.service.AllReportServices;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;

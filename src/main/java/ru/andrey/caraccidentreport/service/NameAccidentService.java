@@ -1,13 +1,15 @@
 package ru.andrey.caraccidentreport.service;
 
-import ru.andrey.caraccidentreport.dbprocessing.FullNameProcessor;
+import ru.andrey.caraccidentreport.dbprocessing.NameAccidentProcessor;
 import ru.andrey.caraccidentreport.dto.FullNameDTO;
-import ru.andrey.caraccidentreport.model.AccidentCircumstances;
+import ru.andrey.caraccidentreport.dto.LimitedAccidentDataDTO;
 import ru.andrey.caraccidentreport.model.LimitedAccidentData;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NameAccidentService {
 
-    public LimitedAccidentData getAccidentDetails (FullNameDTO fullNameDTO) {
+    public List<LimitedAccidentDataDTO> getAccidentDetails (FullNameDTO fullNameDTO) {
 
         String fullName = fullNameDTO.getFullName();
 
@@ -17,9 +19,18 @@ public class NameAccidentService {
         String name = nameParts[1];
         String fathersName = nameParts[2];
 
-        LimitedAccidentData lad = new FullNameProcessor().getAccidentData(surname, name, fathersName);
+        List<LimitedAccidentData> ladsList = new NameAccidentProcessor().getAccidentData(surname, name, fathersName);
 
-        return lad;
+        List<LimitedAccidentDataDTO> ladDTOsList = new ArrayList<>();
+        for(LimitedAccidentData lad: ladsList) {
+            LimitedAccidentDataDTO ladDTO = new LimitedAccidentDataDTO();
+            ladDTO.setAddress(lad.getAddress());
+            ladDTO.setTime(lad.getTime());
+            ladDTO.setGuilt(lad.getGuilt());
+            ladDTOsList.add(ladDTO);
+        }
+
+        return ladDTOsList;
 
 
 

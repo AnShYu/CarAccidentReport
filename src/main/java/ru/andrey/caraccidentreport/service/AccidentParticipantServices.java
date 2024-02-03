@@ -1,10 +1,8 @@
 package ru.andrey.caraccidentreport.service;
 
 import ru.andrey.caraccidentreport.dbprocessing.AccidentParticipantProcessor;
-import ru.andrey.caraccidentreport.dbprocessing.DriverProcessor;
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
 import ru.andrey.caraccidentreport.model.AccidentParticipantData;
-import ru.andrey.caraccidentreport.model.DriverData;
 import ru.andrey.caraccidentreport.parsing.Driver;
 
 public class AccidentParticipantServices {

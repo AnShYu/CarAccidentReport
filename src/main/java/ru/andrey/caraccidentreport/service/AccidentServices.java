@@ -4,7 +4,6 @@ import ru.andrey.caraccidentreport.dbprocessing.AccidentProcessor;
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
 import ru.andrey.caraccidentreport.model.AccidentCircumstances;
 import ru.andrey.caraccidentreport.parsing.GeneralCircumstances;
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;

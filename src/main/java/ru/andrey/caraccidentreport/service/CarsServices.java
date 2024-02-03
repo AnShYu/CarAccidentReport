@@ -1,10 +1,8 @@
 package ru.andrey.caraccidentreport.service;
 
 import ru.andrey.caraccidentreport.dbprocessing.CarsProcessor;
-import ru.andrey.caraccidentreport.dbprocessing.DriverProcessor;
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
 import ru.andrey.caraccidentreport.model.CarData;
-import ru.andrey.caraccidentreport.model.DriverData;
 import ru.andrey.caraccidentreport.parsing.Driver;
 
 public class CarsServices {
@@ -22,9 +20,11 @@ public class CarsServices {
         car.setCarPlate(carOnePlate);
 
         CarsProcessor cp = new CarsProcessor();
-        long carId = cp.addCar(car, driverId);
-        return carId;
-
+        long carID = cp.checkIfCarIsInDB(car);
+        if (carID < 0) {
+            carID = cp.addCar(car, driverId);
+        }
+        return carID;
 
     }
 

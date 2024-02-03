@@ -4,7 +4,6 @@ import ru.andrey.caraccidentreport.dbprocessing.DriverProcessor;
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
 import ru.andrey.caraccidentreport.model.DriverData;
 import ru.andrey.caraccidentreport.parsing.Driver;
-import ru.andrey.caraccidentreport.parsing.GeneralCircumstances;
 
 public class PersonsServices {
 
@@ -24,8 +23,11 @@ public class PersonsServices {
         driverData.setPassport(passportNumberOne);
 
         DriverProcessor dp = new DriverProcessor();
-        long driverId = dp.addDriver(driverData);
-        return driverId;
+        long driverID = dp.checkIfDriverIsInDB(driverData);
+        if (driverID < 0) {
+            driverID = dp.addDriver(driverData);
+        }
+        return driverID;
 
 
     }

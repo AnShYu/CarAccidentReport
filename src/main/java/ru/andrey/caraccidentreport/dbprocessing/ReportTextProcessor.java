@@ -2,7 +2,6 @@ package ru.andrey.caraccidentreport.dbprocessing;
 
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
 import ru.andrey.caraccidentreport.model.ReportText;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

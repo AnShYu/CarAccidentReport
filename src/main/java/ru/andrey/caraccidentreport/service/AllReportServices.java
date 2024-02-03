@@ -1,17 +1,8 @@
 package ru.andrey.caraccidentreport.service;
-
-import ru.andrey.caraccidentreport.dbprocessing.AccidentProcessor;
 import ru.andrey.caraccidentreport.dto.ReportTextDTO;
-import ru.andrey.caraccidentreport.model.AccidentCircumstances;
-import ru.andrey.caraccidentreport.model.CarData;
-import ru.andrey.caraccidentreport.model.DriverData;
-import ru.andrey.caraccidentreport.model.ReportText;
 import ru.andrey.caraccidentreport.parsing.Accident;
 import ru.andrey.caraccidentreport.parsing.Driver;
 import ru.andrey.caraccidentreport.parsing.GeneralCircumstances;
-import ru.andrey.caraccidentreport.dbprocessing.CarsProcessor;
-import ru.andrey.caraccidentreport.dbprocessing.DriverProcessor;
-import ru.andrey.caraccidentreport.dbprocessing.ReportTextProcessor;
 import ru.andrey.caraccidentreport.exceptions.DataAccessException;
 import ru.andrey.caraccidentreport.parsing.PatternsKeeper;
 import ru.andrey.caraccidentreport.parsing.ReportParser;

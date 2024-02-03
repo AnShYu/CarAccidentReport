@@ -10,6 +10,10 @@
     <servlet>
         <servlet-name>getAccidentDataServlet</servlet-name>
         <servlet-class>ru.andrey.caraccidentreport.httpmanager.PersonsAccidentsServlet</servlet-class>
+        <init-param>
+            <param-name>alternativeFullNameInput</param-name>
+            <param-value>true</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>getAccidentDataServlet</servlet-name>
