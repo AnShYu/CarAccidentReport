@@ -1,4 +1,5 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+
     <servlet>
         <servlet-name>addReportServlet</servlet-name>
         <servlet-class>ru.andrey.caraccidentreport.httpmanager.ReportServlet</servlet-class>
@@ -7,6 +8,7 @@
         <servlet-name>addReportServlet</servlet-name>
         <url-pattern>/addreport</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>getAccidentDataServlet</servlet-name>
         <servlet-class>ru.andrey.caraccidentreport.httpmanager.PersonsAccidentsServlet</servlet-class>
@@ -19,4 +21,42 @@
         <servlet-name>getAccidentDataServlet</servlet-name>
         <url-pattern>/getaccidentdata</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>ru.andrey.caraccidentreport.httpmanager.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>loginViaDBServlet</servlet-name>
+        <servlet-class>ru.andrey.caraccidentreport.httpmanager.LoginViaDBServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginViaDBServlet</servlet-name>
+        <url-pattern>/loginviadb</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>usersAccidentServlet</servlet-name>
+        <servlet-class>ru.andrey.caraccidentreport.httpmanager.UsersAccidentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>usersAccidentServlet</servlet-name>
+        <url-pattern>/getmyaccidentsdata</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>AuthorisationFilter</filter-name>
+        <filter-class>ru.andrey.caraccidentreport.httpmanager.AuthorisationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthorisationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>

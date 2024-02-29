@@ -37,5 +37,15 @@ public class LimitedAccidentData {
     public void setTime(Timestamp time) {
         this.time = time;
     }
+
+
+    @Override
+    public String toString() {
+        return "LimitedAccidentData{" +
+                "address=" + address +
+                ", guilt=" + guilt +
+                ", time=" + time +
+                '}';
+    }
 }
 

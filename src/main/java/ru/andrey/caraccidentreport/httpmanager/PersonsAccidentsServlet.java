@@ -14,13 +14,14 @@ import java.util.List;
 
 public class PersonsAccidentsServlet extends HttpServlet {
 
+    private static final String ALTERNATIVE_FULLNAME_INPUT = "alternativeFullNameInput";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        String param = this.getServletConfig().getInitParameter(ALTERNATIVE_FULLNAME_INPUT);
 
-        String alternativeFullNameInput = this.getServletConfig().getInitParameter("alternativeFullNameInput");
         String fullName;
-        if(alternativeFullNameInput.equals("true")) {
+        if(param.equals("true")) {
             // пользователь передает ФИО в качестве трех отдельных параметров фамилия, имя, отчество
             String lastName = req.getParameter("lastname");
             String firstName = req.getParameter("firstname");
