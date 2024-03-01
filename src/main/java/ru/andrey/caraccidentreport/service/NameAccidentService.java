@@ -4,6 +4,9 @@ import ru.andrey.caraccidentreport.dbprocessing.NameAccidentProcessor;
 import ru.andrey.caraccidentreport.dto.FullNameDTO;
 import ru.andrey.caraccidentreport.dto.LimitedAccidentDataDTO;
 import ru.andrey.caraccidentreport.model.LimitedAccidentData;
+import ru.andrey.caraccidentreport.util.DTOMapper;
+import ru.andrey.caraccidentreport.util.LimitedAccidentDataConverter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +16,6 @@ public class NameAccidentService {
 
         String fullName = fullNameDTO.getFullName();
 
-
         String[] nameParts = fullName.split("_");
         String surname = nameParts[0];
         String name = nameParts[1];
@@ -22,18 +24,12 @@ public class NameAccidentService {
         List<LimitedAccidentData> ladsList = new NameAccidentProcessor().getAccidentData(surname, name, fathersName);
 
         List<LimitedAccidentDataDTO> ladDTOsList = new ArrayList<>();
-        for(LimitedAccidentData lad: ladsList) {
-            LimitedAccidentDataDTO ladDTO = new LimitedAccidentDataDTO();
-            ladDTO.setAddress(lad.getAddress());
-            ladDTO.setTime(lad.getTime());
-            ladDTO.setGuilt(lad.getGuilt());
+        DTOMapper<LimitedAccidentDataDTO, LimitedAccidentData> mapper = new LimitedAccidentDataConverter();
+        for (LimitedAccidentData lad: ladsList) {
+            LimitedAccidentDataDTO ladDTO = mapper.convertToDTO(lad);
             ladDTOsList.add(ladDTO);
         }
-
         return ladDTOsList;
-
-
-
     }
 
 }

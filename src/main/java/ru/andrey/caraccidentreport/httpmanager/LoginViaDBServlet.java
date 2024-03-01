@@ -17,11 +17,9 @@ public class LoginViaDBServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        AuthorizationDataDTO lpDTO = new AuthorizationDataDTO(login, password);
-
         LoginService loginService = new LoginService();
 
-        Boolean exists = loginService.checkIfAuthorized(lpDTO);
+        Boolean exists = loginService.checkIfAuthorized(login, password);
 
         if (exists) {
             req.getSession().setAttribute("isAuthorised", "true");

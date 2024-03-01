@@ -20,9 +20,8 @@ public class UsersAccidentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String login = (String) req.getSession().getAttribute("login");
-        AuthorizationDataDTO authorizationDTO = new AuthorizationDataDTO(login);
 
-        List<LimitedAccidentDataDTO> ladDTOsList = new LoginAccidentService().getAccidentDataByLogin(authorizationDTO);
+        List<LimitedAccidentDataDTO> ladDTOsList = new LoginAccidentService().getAccidentDataByLogin(login);
 
         String newJson = new Gson().toJson(ladDTOsList);
 

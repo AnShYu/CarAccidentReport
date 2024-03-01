@@ -6,10 +6,11 @@ import ru.andrey.caraccidentreport.model.AuthorizationData;
 
 public class LoginService {
 
-    public Boolean checkIfAuthorized(AuthorizationDataDTO lpDTO) {
-        AuthorizationData lp = new AuthorizationData(lpDTO.getLogin(), lpDTO.getPassword());
+    public Boolean checkIfAuthorized(String login, String password) {
+
         LoginProcessor loginProcessor = new LoginProcessor();
-        return loginProcessor.checkLoginAndPasswordInDB(lp);
+
+        return loginProcessor.checkLoginAndPasswordInDB(login, password);
     }
 
 }

@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class LoginProcessor {
 
-    public Boolean checkLoginAndPasswordInDB(AuthorizationData lp) {
+    public Boolean checkLoginAndPasswordInDB(String login, String password) {
 
         Connection connection = null;
         PreparedStatement pstmt = null;
@@ -23,8 +23,8 @@ public class LoginProcessor {
             String userIDRequest = "SELECT id FROM car_accident_report.authorized_users au WHERE au.user_login=? AND au.user_password=?";
             pstmt = connection.prepareStatement(userIDRequest);
 
-            pstmt.setString(1, lp.getLogin());
-            pstmt.setString(2, lp.getPassword());
+            pstmt.setString(1, login);
+            pstmt.setString(2, password);
 
 
             ResultSet resultSet = pstmt.executeQuery();
