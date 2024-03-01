@@ -24,15 +24,12 @@ public class LoginAccidentProcessor {
             String getAccidentDataSQLQuery = "select a.province, a.city, a.district, a.street, a.bld_number, a.driver_claimed_guilt, a.accident_time from car_accident_report.accident a \n" +
                     "       where id in (select ap.accident_id from car_accident_report.accident_participant ap \n" +
                     "            where ap.driver_id = (select p.id from car_accident_report.persons p \n" +
-                    "                 where p.surname = (select au.user_surname from car_accident_report.authorized_users au where au.user_login = ?) \n" +
-                    "                 and p.first_name = (select au.user_name from car_accident_report.authorized_users au where au.user_login = ?)\n" +
-                    "                 and p.fathers_name = (select au.user_fathers_name from car_accident_report.authorized_users au where au.user_login = ?)));";
+                    "                 where p.id = (select ad.person_id from car_accident_report.authorization_data ad " +
+                    "                   where ad.user_login = ?)));";
 
             pstmt = connection.prepareStatement(getAccidentDataSQLQuery);
 
             pstmt.setString(1, login);
-            pstmt.setString(2, login);
-            pstmt.setString(3, login);
 
             ResultSet rs = pstmt.executeQuery();
             String province;

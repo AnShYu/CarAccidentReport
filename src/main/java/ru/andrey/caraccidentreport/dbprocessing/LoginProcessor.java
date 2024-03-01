@@ -20,7 +20,7 @@ public class LoginProcessor {
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/andrey",
                     "andrey", "andrey");
 
-            String userIDRequest = "SELECT id FROM car_accident_report.authorized_users au WHERE au.user_login=? AND au.user_password=?";
+            String userIDRequest = "SELECT id FROM car_accident_report.authorization_data ad WHERE ad.user_login=? AND ad.user_password=?";
             pstmt = connection.prepareStatement(userIDRequest);
 
             pstmt.setString(1, login);
