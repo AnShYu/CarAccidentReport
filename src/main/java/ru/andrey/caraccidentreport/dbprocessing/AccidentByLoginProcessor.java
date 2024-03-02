@@ -8,9 +8,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginAccidentProcessor {
+public class AccidentByLoginProcessor implements AccidentDataProvider<String, List<LimitedAccidentData>> {
 
-    public List<LimitedAccidentData> getAccidentDataByLogin(String login) {
+    @Override
+    public List<LimitedAccidentData> getAccidentData(String login) {
 
         Connection connection = null;
         PreparedStatement pstmt = null;

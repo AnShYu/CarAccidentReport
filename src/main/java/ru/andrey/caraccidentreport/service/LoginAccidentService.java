@@ -1,8 +1,7 @@
 package ru.andrey.caraccidentreport.service;
 
-import ru.andrey.caraccidentreport.dbprocessing.LoginAccidentProcessor;
-import ru.andrey.caraccidentreport.dbprocessing.NameAccidentProcessor;
-import ru.andrey.caraccidentreport.dto.AuthorizationDataDTO;
+import ru.andrey.caraccidentreport.dbprocessing.AccidentDataProvider;
+import ru.andrey.caraccidentreport.dbprocessing.AccidentByLoginProcessor;
 import ru.andrey.caraccidentreport.dto.LimitedAccidentDataDTO;
 import ru.andrey.caraccidentreport.model.LimitedAccidentData;
 import ru.andrey.caraccidentreport.util.DTOMapper;
@@ -15,7 +14,9 @@ public class LoginAccidentService {
 
     public List<LimitedAccidentDataDTO> getAccidentDataByLogin(String login) {
 
-        List<LimitedAccidentData> ladsList = new LoginAccidentProcessor().getAccidentDataByLogin(login);
+        AccidentDataProvider<String, List<LimitedAccidentData>> accidentDataProvider = new AccidentByLoginProcessor();
+
+        List<LimitedAccidentData> ladsList = accidentDataProvider.getAccidentData(login);
 
         List<LimitedAccidentDataDTO> ladDTOsList = new ArrayList<>();
         DTOMapper<LimitedAccidentDataDTO, LimitedAccidentData> mapper = new LimitedAccidentDataConverter();
